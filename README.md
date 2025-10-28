@@ -30,20 +30,16 @@ from statsmodels.tsa.holtwinters import ExponentialSmoothing
 # Load data
 data = pd.read_csv('/content/NFLX.csv')
 
-# ✅ Make sure you have a datetime column (replace 'date' with your actual column name)
-# Example: if your column is 'timestamp' or 'datetime', change it accordingly
 data['Date'] = pd.to_datetime(data['Date'])
 
-# ✅ Set datetime column as index
+
 data.set_index('Date', inplace=True)
 
-# Select 'open' column
 passengers_data = data[['Open']]
 print("Shape of the dataset:", passengers_data.shape)
 print("First 10 rows of the dataset:")
 print(passengers_data.head(10))
 
-# Plot original data
 plt.figure(figsize=(12, 6))
 plt.plot(passengers_data['Open'], label='Original Open Data')
 plt.title('Original Data')
